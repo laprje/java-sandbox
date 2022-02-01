@@ -13,9 +13,10 @@ import assign03.PriorityQueue;
  * @version January 30, 2022
  */
 
-public class SimplePriorityQueueSandbox<Type> implements PriorityQueue{
+public class SimplePriorityQueueSandbox<Type> implements PriorityQueue<Type>{
 
-    Type[] arr = (Type[]) new Object[32];
+    @SuppressWarnings("unchecked")
+	Type[] arr = (Type[]) new Object[32];
     Comparator<? super Type> comparator = null;
 
     public SimplePriorityQueueSandbox(){
@@ -33,7 +34,7 @@ public class SimplePriorityQueueSandbox<Type> implements PriorityQueue{
      * @return the maximum element
      * @throws NoSuchElementException if the priority queue is empty
      */
-    public Object findMax() throws NoSuchElementException {
+    public Type findMax() throws NoSuchElementException {
     	//TODO finish method
         return null;
     }
@@ -44,7 +45,7 @@ public class SimplePriorityQueueSandbox<Type> implements PriorityQueue{
      * @return the maximum element
      * @throws NoSuchElementException if the priority queue is empty
      */
-    public Object deleteMax() throws NoSuchElementException {
+    public Type deleteMax() throws NoSuchElementException {
     	//TODO finish method
         return null;
     }
@@ -54,7 +55,7 @@ public class SimplePriorityQueueSandbox<Type> implements PriorityQueue{
      *
      * @param item - the element to insert
      */
-    public void insert(Object item) {
+    public void insert(Type item) {
     	if(this.BinarySearch((Type) item) > 0) {
     		//TODO finish writing insert method based on binary search
     	} else {
@@ -129,6 +130,7 @@ public class SimplePriorityQueueSandbox<Type> implements PriorityQueue{
 			} else {
 				//no comparator available; base constructor called
 				mid = (low+high) >>> 1;
+				@SuppressWarnings("unchecked")
 				Comparable<Type> value = (Comparable<Type>) arr[mid];
 				if(value.compareTo(item) < 0) {
 					//desired value is greater than the middle element
