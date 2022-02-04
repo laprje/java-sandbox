@@ -13,11 +13,12 @@ import assign03.PriorityQueue;
  * @version January 30, 2022
  */
 
-public class SimplePriorityQueueSandbox<Type> implements PriorityQueue<Type>{
+public class SimplePriorityQueueSandbox<Type> implements PriorityQueue<Type>{ //TODO when implementing a generic interface you need to specify the type here
 
     @SuppressWarnings("unchecked")
 	Type[] arr = (Type[]) new Object[32];
     Comparator<? super Type> comparator = null;
+    int size = 0;
 
     public SimplePriorityQueueSandbox(){
 
@@ -56,7 +57,9 @@ public class SimplePriorityQueueSandbox<Type> implements PriorityQueue<Type>{
      * @param item - the element to insert
      */
     public void insert(Type item) {
-    	if(this.BinarySearch((Type) item) > 0) {
+    	if(this.size == 0) {
+    		this.arr[0] = item;
+    	} else if(this.BinarySearch((Type) item) > 0) {
     		//TODO finish writing insert method based on binary search
     	} else {
     		//TODO

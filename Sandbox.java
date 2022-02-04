@@ -1,5 +1,7 @@
 package cs2420sandbox;
 
+import java.util.Arrays;
+
 public class Sandbox {
 //	public static void main(String[] args) {
 //		boolean b = true;
@@ -11,25 +13,17 @@ public class Sandbox {
 //		  System.out.println("3");
 //	}
 
-	private static int binarySearch0(Object[] a, int fromIndex, int toIndex, Object key) {
-		int low = fromIndex;
-		int high = toIndex - 1;
 
-		while (low <= high) {
-			int mid = (low + high) >>> 1;
-			@SuppressWarnings("rawtypes")
-			Comparable midVal = (Comparable) a[mid];
-			@SuppressWarnings("unchecked")
-			int cmp = midVal.compareTo(key);
-
-			if (cmp < 0)
-				low = mid + 1;
-			else if (cmp > 0)
-				high = mid - 1;
-			else
-				return mid; // key found
-		}
-		return -(low + 1); // key not found.
+	public static <T extends Comparable<T>> T median(T[] arr) {
+		Arrays.sort(arr, (x,y) -> x.compareTo(y));
+		return arr[arr.length/2];
 	}
 
+	public static void main(String[] args) {
+		Double[] array = new Double[16];
+		for(int i =0; i<array.length; i++){
+			array[i] = Math.random() * 100;
+		}
+		System.out.println(median(array));
+	}
 }
